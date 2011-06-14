@@ -4,7 +4,18 @@ Cookie Sessions
 A [Connect](http://github.com/senchalabs/connect) middleware to allow you to store 
 your sessions directly in the client's cookie.
 
-Session data is made available through the request.session property.
+Installation
+------------
+
+To install the latest released version:
+
+    npm install connect-cookie-session
+
+Usage
+-----
+
+Once you have put cookieSession in your list of middleware, you can access the session
+data via request.session. Any data stored here will be available to all future requests.
 
     var connect       = require("connect"),
         cookieSession = require("connect-cookie-session");
@@ -34,7 +45,6 @@ The session middleware which comes bundled with Connect stores an id in the cook
 which is then used by the server to lookup the session data from memory or some 
 other server backend. This library instead allows you to store the session data 
 directly in the cookie without the need for storing session on the server.
-
 
 Configuration
 -------------
