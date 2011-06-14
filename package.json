@@ -1,0 +1,13 @@
+{ 
+  "name"         : "connect-cookie-session",
+  "version"      : "0.0.1",
+  "description"  : "Connect middleware to allow you to store your sessions directly in the client's cookie.",
+  "main"         : "index",
+  "repository" : {
+    "type" : "git",
+    "url"  : "https://github.com/jpallen/Connect-Cookie-Session-Storage"
+  },
+  "dependencies" : {
+    "connect" : ""
+  }
+}
