@@ -1,1 +1,1 @@
-module.exports = require("./lib/cookie-sessions");
+module.exports = require("./lib/connect-cookie-session");

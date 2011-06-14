@@ -1,9 +1,9 @@
-var connect        = require("connect"),
-    cookieSessions = require("./index");
+var connect       = require("connect"),
+    cookieSession = require("connect-cookie-session");
 
 connect(
-    connect.cookieParser(), // CookieSessions needs cookieParser
-    cookieSessions({
+    connect.cookieParser(), // cookieSession needs cookieParser
+    cookieSession({
         // You should use your own secret key (and keep it secret!)
         secret : "d3b07384d113edec49eaa6238ad5ff00"
     }),

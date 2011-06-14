@@ -1,17 +1,17 @@
 Cookie Sessions
 ===============
 
-[Connect](http://github.com/senchalabs/connect) middleware to allow you to store 
+A [Connect](http://github.com/senchalabs/connect) middleware to allow you to store 
 your sessions directly in the client's cookie.
 
 Session data is made available through the request.session property.
 
-    var connect        = require("connect"),
-        cookieSessions = require("./index");
+    var connect       = require("connect"),
+        cookieSession = require("connect-cookie-session");
     
     connect(
         connect.cookieParser(), // cookieSessions needs cookieParser
-        cookieSessions({
+        cookieSession({
             // You should use your own secret key (and keep it secret!)
             secret : "d3b07384d113edec49eaa6238ad5ff00"
         }),
@@ -26,20 +26,20 @@ Session data is made available through the request.session property.
 Configuration
 -------------
 
-CookieSessions accepts the following options:
+cookieSession accepts the following options:
 
-* _secret_ - The secret key used to encrypt the session. 
+* _secret_ - The secret key used to protect the session from tampering. 
 * _key_    - The key to store the cookie under. Defaults to 'connect.sid'.
 * _cookie_ - Options for the cookie, which can include _maxAge_, _httpOnly_, 
   _path_, _domain_ and _secure_.
 * _cookieEncoder_ - A custom encoder to converting the session data to a cookie
-  string and back again. If a custom encoder is used, _secret_ will be ingored.
+  string and back again. If a custom encoder is used, _secret_ will be ignored.
   It is up to you to configure the secret key for your encoder if you want one
   (and you should!)
 
 Example:
 
-    cookieSessions({
+    cookieSession({
         secret : "d3b07384d113edec49eaa6238ad5ff00",
         key    : "wonder_app_key",
         // cookie maxAge defaults to 14400000, path defaults to '/' and

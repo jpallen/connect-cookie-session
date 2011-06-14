@@ -5,7 +5,7 @@
   "main"         : "index",
   "repository" : {
     "type" : "git",
-    "url"  : "https://github.com/jpallen/Connect-Cookie-Session-Storage"
+    "url"  : "https://github.com/jpallen/connect-cookie-session"
   },
   "dependencies" : {
     "connect" : ""
