@@ -23,6 +23,19 @@ Session data is made available through the request.session property.
         }
     ).listen(8080);
 
+How it works
+------------
+
+A cookie is a small piece of data that can be stored on the client's machine and
+passed back to the server with each request. Any data stored there on one request
+is available to subsequent requests. 
+
+The session middleware which comes bundled with Connect stores an id in the cookie
+which is then used by the server to lookup the session data from memory or some 
+other server backend. This library instead allows you to store the session data 
+directly in the cookie without the need for storing session on the server.
+
+
 Configuration
 -------------
 
@@ -32,10 +45,9 @@ cookieSession accepts the following options:
 * _key_    - The key to store the cookie under. Defaults to 'connect.sid'.
 * _cookie_ - Options for the cookie, which can include _maxAge_, _httpOnly_, 
   _path_, _domain_ and _secure_.
-* _cookieEncoder_ - A custom encoder to converting the session data to a cookie
-  string and back again. If a custom encoder is used, _secret_ will be ignored.
-  It is up to you to configure the secret key for your encoder if you want one
-  (and you should!)
+* _cookieEncoder_ - A custom encoder for converting the session data to a cookie
+  and back again. If a custom encoder is used, _secret_ will be ignored.
+  It is up to you how to handle security for your custom encoder.
 
 Example:
 
@@ -50,19 +62,24 @@ Example:
         }
     })
 
-Session Storage
----------------
+Default Cookie Encoder
+----------------------
 
-All session data is encoded in the cookie and passed back to the client at the
-end of a request. On the next request from the client, the cookie is returned 
-and is decoded to restore the session state.
+The default encoder stores the session data in the cookie as JSON encoded in Base64.
+This is then encrypted and hashed using the secret key. The hash is appended
+to the cookie and used to check that the cookie has not been tampered with.
 
-By deafult, Cookie Sessions encodes the sessions data as JSON and encrypts it 
-using AES-192 using the secret key that you supply. This should prevent the
-end user from being able to modify their cookie.
+Keep in mind that cookies can only store 4k of data.
 
-Cookies can only store 4k of data so the amount of data you can store in your
-session is limited by this.
+*Security*: Note that the contents of the cookie are stored plainly in Base64
+and can be accessed by the user. You should not store secret information in the 
+session when using the default cookie encoder. I implemented it this way as it
+is the same way Rails does things. If there is demand or I need it, I may implement
+an additional cookie encoder where all the cookie data is encrypted. A patch
+that does this is welcome.
+
+Custom Cookie Encoder
+---------------------
 
 You can easily implement you own way of encoding the session data in the cookie
 by providing a custom encoder. Your encoder must supply the following methods:
@@ -77,3 +94,4 @@ by providing a custom encoder. Your encoder must supply the following methods:
                           decode() must be able to return a valid session.
 
 See lib/encoders/json.js for the default implemention.
+
