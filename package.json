@@ -9,5 +9,10 @@
   },
   "dependencies" : {
     "connect" : ""
-  }
+  },
+  "author" : {
+    "name"  : "James P. Allen",
+    "email" : "jamesallen0108@gmail.com"
+  },
+  "homepage" : "https://github.com/jpallen/connect-cookie-session"
 }
