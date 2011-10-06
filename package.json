@@ -1,6 +1,6 @@
 { 
   "name"         : "connect-cookie-session",
-  "version"      : "0.0.1",
+  "version"      : "0.0.2",
   "description"  : "Connect middleware to allow you to store your sessions directly in the client's cookie.",
   "main"         : "index",
   "repository" : {

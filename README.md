@@ -105,3 +105,11 @@ by providing a custom encoder. Your encoder must supply the following methods:
 
 See lib/encoders/json.js for the default implemention.
 
+Version History
+---------------
+
+**0.0.2**
+Bugfix: maxAge was not being updated correctly. https://github.com/jpallen/connect-cookie-session/pull/2
+
+**0.0.1**
+Initial Release
