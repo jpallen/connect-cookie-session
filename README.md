@@ -1,3 +1,7 @@
+*This module does not work with connect v2.x. I don't have to the time to maintain it 
+at the moment, sorry. If anyone would like to take over and fix it for v2 then please
+get in contact*
+
 Cookie Sessions
 ===============
 
