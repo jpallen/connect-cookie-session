@@ -8,7 +8,7 @@
     "url"  : "https://github.com/jpallen/connect-cookie-session"
   },
   "dependencies" : {
-    "connect" : ""
+    "connect" : "1.x.x"
   },
   "author" : {
     "name"  : "James P. Allen",
